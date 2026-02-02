@@ -1,0 +1,207 @@
+SECTION A: Technical Questions
+
+1. What is the difference between var, let, and const?
+
+                             var	                        let	                                                    const
+.var is an functional scoped/global scoped	. let is on the block scoped	                        . const is on the block scoped
+.var allows redeclaration and reinitialization	.let allows reinitialization not accept redeclaration	. const not accept reuse, reinitialization, redeclaration
+.var keyword used to declare variables	        . let is a modem keyword(Es6)	                        .const is used when the value should never change
+
+
+2. Which keyword allows redeclaration and why?
+
+  . var is function-scoped, not block scoped
+  . JavaScript doesn't treat redeclaring a variable in the same scope as an error
+        var x=10;
+       var x=20;     console.log(x); // 20
+
+3. Which keyword allows reinitialization?
+ 
+  var and let
+
+Reinitialization means assigning a new value to the same variable
+
+ var a = 10;                 let b = 5;
+ a = 20; // allowed            b= 15;   // allowed
+
+4. Which keyword does not allow redeclaration and reinitialization?
+  
+   co . redeclaration is not allowed in the same scope.
+ . reinitialization is not allowed after the first value is assigned.
+ . const is block-scoped and meant for fixed values.
+
+5. Why should const be used for fixed values?
+
+   .const should be used for fixed values because it prevents the value from being changed accidentally
+  .once assigned the value cannot be re-initialized
+
+6. What error occurs when redeclaring a let variable?
+
+  . redeclaring a let variable causes a syntax error
+   let a= 10;  
+   let a= 20;// syntax error
+
+
+7. What error occurs when reassigning a const variable?
+
+  . An error occurs reassigning a const variable is type error
+     const x=10;
+      x=20;// type error
+
+8 Which keyword is preferred in modern JavaScript and why?
+
+    const
+
+. Block scoped
+. values cannot be reassigned so code is safer
+  const pi = 3.14;
+
+9. Can const be declared without initialization? Explain.
+
+   .No , a const variable cannot be declared without initialization in java script
+
+ java script throws this error:
+ syntax error: missing initializer in const declaration
+
+10. When should var be avoided?
+
+    . var should be avoided in modem java script because it is not block scoped and allows
+      redeclaration, leading to bugs
+   .In modern ES6+ code let and const are safer and clearer
+
+SECTION B: Code-Based Questions
+
+11. Predict the output:
+
+var a = 10;
+a = 20;
+var a = 30;
+console.log(a);
+
+//output is 30
+
+12. Predict the output:
+
+let b = 5;
+b = 15;
+console.log(b);
+
+//output is 15
+
+13. Identify the error:
+
+let x = 10;
+let x = 20;
+
+//syntax error
+
+14. Identify the error:
+
+const y = 50;
+y = 100;
+
+//type error
+
+15. Write a program using var to show redeclaration.
+
+     var name='Lavanya';
+     var name='Prathyusha';
+    console.log(name);
+
+// output is: prathyusha
+
+16. Write a program using let to show reinitialization.
+
+     let number = 10;
+
+    console.log(number);
+    number = 25;
+    console.log(number);
+
+output 10
+       25
+
+17. Write a program using const and explain why value cannot change.
+
+const pi = 3.14;
+console.log(pi);
+
+pi=3.1459; // trying to change the value
+
+output: Type error
+assignment to constant variable
+
+18. Convert var to let where applicable.
+    
+     var count=4;
+       
+      if(count>1){
+        
+        var valid=4;
+   }
+   
+   console.log(valid, 'is valid')
+
+       //var is function-scope, we can use outside the block
+ 
+  let count=4;
+
+  if(count>1){
+
+     let valid=4;
+
+     console.log(valid, "is valid")
+     
+   } 
+       //let is block- scope, we can use only inside the block 
+  
+19. Convert var to const where applicable.
+     
+     var sub='telugu';
+     var lesson=10;
+     console.log(sub, lesson);
+
+ // var convert to const
+  
+     const sub='telugu';
+     const lesson=10;
+     console.log(sub, lesson);
+
+20. Write your own example for var, let, and const.
+ 
+     var city = "Hyderabad";
+     var city = "Bangalore";// redeclaration allowed
+      city = "Chennai";    //  reinitialization allowed
+
+     console.log(city);
+   
+    let month = January;
+        month = February;//reinitialization allowed
+
+     console.log(month);
+
+
+    const country =" India";
+    
+    console.log(country);
+     
+     
+
+     
+
+    
+     
+
+   
+
+ 
+
+
+ 
+ 
+  
+
+
+
+
+
