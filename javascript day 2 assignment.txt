@@ -33,7 +33,7 @@ console.log(Name);
 console.log(type of(Name));
 
 // Number
-let number=818;
+let number=810;
 console.log(type of(number),number);
 
 // Boolean
@@ -152,10 +152,11 @@ console.log("Student City:",(Student. city));
 let company={
     company_name:"Stackly",
     trainer:{
-        name: "Naveen Kumar",
+        tname: "Naveen Kumar",
         subject: "Java Script"
     }
 };
-console.log("Company Name:" ,company. company name);
+console.log("Company Name:" ,company. company. name);
 console.log("Trainer Name:",company.trainer.name);
+
 console.log("Trainer Subject:", company. trainer. Subject);
