@@ -1,0 +1,510 @@
+SECTION 1 – Real-Time Function Logic
+
+1. Payroll System:
+
+Create calculate Salary(basic Salary, bonus Percentage)
+- Calculate bonus
+- Deduct 5% tax
+- Return final salary
+- Print full salary breakdown
+
+
+ function calculate Salary(basic Salary, bonus Percentage) {
+     
+    let bonus = (basic Salary * bonus Percentage) / 100;
+    let salary After Bonus = basic Salary + bonus;
+    let tax = salary After Bonus * 0.05;
+    let final Salary = salary After Bonus - tax;
+
+    console.log("----- Salary Breakdown -----");
+    console.log("Basic Salary:" + basic Salary);
+    console.log("Bonus:" + bonus);
+    console.log("After Bonus Salary:"+ salary After Bonus);
+    console.log("Tax (5%): " + tax);
+    console.log("Final Salary: " + final Salary);
+
+    return final Salary;
+}
+
+// Function call
+calculate Salary(40000, 10);
+
+output:
+
+----- Salary Breakdown -----
+Basic Salary: 40000
+Bonus: 2000
+After Bonus Salary: 42000
+Tax (5%): 1100
+Final Salary: 40900
+
+
+2. Student Result System:
+
+Create generate Result(name, marks Array)
+- Calculate total
+- Calculate average
+- Decide Grade (A/B/C/Fail)
+- Return result object
+
+function generate Result(name, marks Array) {
+
+    // calculate total
+    let total = 0;
+    for (let i = 0; i < marks Array. length; i++) {
+        total += marks Array[i];
+    }
+
+    // calculate average
+    let average = total / marks Array. Length;
+
+    // decide grade
+    let grade;
+    if (average >= 90) {
+        grade = "A";
+    } else if (average >= 75) {
+        grade = "B";
+    } else if (average >= 50) {
+        grade = "C";
+    } else {
+        grade = "Fail";
+    }
+
+    // result object
+    let result = {
+        student Name: name,
+        total Marks: total,
+        average Marks: average,
+        grade: grade
+    };
+
+    console.log("---- Student Result ----");
+    console.log("Name: " + result .student Name);
+    console.log("Total: " + result .total Marks);
+    console.log("Average: " + result .average Marks);
+    console.log("Grade: " + result .grade);
+
+    return result;
+}
+
+// function call
+generate Result(" Prathyusha", [80, 70, 90, 85, 75]);
+
+output:
+  Name : Prathyusha
+ total : 400
+average: 80
+ grade :B
+
+
+SECTION 2 – Scope & Hoisting (Debugging)
+
+
+3. Debug This Code:
+
+function demo(){
+if(true){
+var a = 10;
+let b = 20;
+}
+console.log(a);
+console.log(b);
+}
+Questions:
+- What will happen?
+- Why?
+- Fix it properly.
+
+
+- What will happen?
+
+ 10 reference Error : b is not defined 
+
+- Why?
+  
+
+  var a = 10;
+
+. var has function scope 
+. it can be used outside if block but inside function
+. console.log(a) works it can prints 10
+ 
+  let b = 20;
+
+.  let has block scope
+.  it works only inside
+. console.log(b) is not defined 
+
+ - Fix it properly
+
+ function demo(){
+    let a;
+    let b;
+
+    if(true){
+        a = 10;
+        b = 20;
+    }
+
+    console.log(a);
+    console.log(b);
+}
+
+demo();
+
+output:
+
+ 10
+ 20
+  
+4. Hoisting Analysis:
+
+console.log(x);
+var x = 100;
+console.log(y);
+let y = 200;
+Predict output and explain.
+
+
+console.log(x);
+var x = 100;
+console.log(y);
+let y = 200;
+
+predicted output:
+
+undefined
+Reference Error: Cannot access 'y' before initialization
+
+explanation: 
+
+console.log(x);
+var x is hoisted to top but value not assigned
+
+var x;
+console.log(x);  
+x = 100;
+
+output:
+ // undefined
+
+console.log(y);
+let y = 200;
+
+. let is also hoisted
+
+. But not initialized
+
+. It stays in temporal dead zone
+  
+Before declaration gives
+
+Reference Error: Cannot access 'y' before initialization
+
+
+SECTION 3 – Callback & Higher Order (Industry Simulation)
+
+
+5. Order Processing System:
+
+Create process Order(order Id, callback)
+- Print "Order Processed"
+- Call generate Invoice(order Id)
+
+function generate Invoice(order Id){
+    console.log("Invoice generated for Order ID: " + order Id);
+}
+
+function process Order(order Id, callback){
+    console.log("Order Processed");
+
+    // call invoice function
+    generate Invoice(order Id);
+
+    // callback function
+    callback();
+}
+
+// callback function
+function payment Success(){
+    console.log("Payment successful & order completed");
+}
+
+// function call
+process Order(103, payment Success);
+
+ output:
+
+Order Processed
+Invoice generated for Order ID: 103
+Payment successful & order completed
+
+
+6. Bank Transaction System:
+
+Create transaction(amount, type, callback)
+- If deposit → add
+- If withdraw → subtract
+- Call send SMS()
+
+let balance = 9000;
+
+function send SMS() {
+    console.log("SMS: Transaction successful");
+}
+
+function transaction(amount, type, callback) {
+
+    if(type === "deposit"){
+        balance = balance + amount;
+        console.log("Amount deposited:", amount);
+    }
+    else if(type === "withdraw"){
+        balance = balance - amount;
+        console.log("Amount withdrawn:", amount);
+    }
+    else{
+        console.log("Invalid transaction type");
+        return;
+    }
+
+    console.log("Current balance:", balance);
+
+    // callback function
+    callback();
+}
+
+// function call
+transaction(2000, "deposit", send SMS);
+
+output
+
+ Amount deposited : 2000
+ current balance  : 11000
+    SMS: Transaction successful
+
+
+7. Dynamic Price Builder:
+
+Create price Builder(base Price)(discount)(tax)
+Return final price
+Example: price Builder(2000)(15)(18)
+
+function price Builder(base Price, discount, tax){
+
+    let discounted Price = base Price - (base Price * discount/100);
+    let final Price = discounted Price + (discounted Price * tax/100);
+
+    console.log("Final Price:", final Price);
+}
+
+price Builder(2000, 15, 18);
+
+
+output:
+
+final price :2006
+
+
+SECTION 5 – IIFE (Security + Encapsulation)
+
+8. Secure Company Module:
+
+- Store private variable company Code
+- Expose get Company Status()
+- company Code should not be directly accessible
+
+const company Module = (function(){
+
+    let company Code = "ABC345";   // private variable
+
+    function get Company Status(){
+        console.log("Company code is secure");
+    }
+
+    return {
+        get Company Status
+    };
+
+})();
+
+company Module. get Company Status();
+
+output:
+
+company code is secure
+
+SECTION 6 – Generator (Advanced Logic)
+
+
+9. Unique Order ID Generator:
+
+Generate ORD1001, ORD1002, ORD1003, etc. function order Id generator() {
+    let count = 1000; // private variable
+
+  return function () {
+    count++;
+    return "ORD" + count;
+    }
+}
+let generator = ordered Id Generator();
+console.log(generator()); 
+console.log(generator()); 
+console.log(generator());
+
+
+10. Coupon Spin System:
+
+Yield:
+- 10% OFF
+- 20% OFF
+- 50% OFF
+- No Luck
+- Jackpot
+Simulate multiple spins.
+
+function* coupon Spin() {
+    const prizes = ["10% OFF", "20% OFF", "50% OFF", "No Luck", "Jackpot"];
+    for (let prize of prizes) yield prize;
+}
+
+
+SECTION 7 – Mini Project (Integrated)
+
+Mini E-Commerce Flow:
+
+- add To Cart(product, price)
+- calculate Total()
+- apply Discount() using currying
+- generate Coupon() using generator
+- process Payment() using callback
+- Hide config using IIFE
+
+
+// Hide config using IIFE
+const App Config = (function () {
+  let tax = 0.05; // private
+  return {
+    get Tax: function () {
+      return tax;
+    }
+  };
+})();
+
+// Cart array
+let cart = [];
+
+// Add to cart
+function add To Cart(product, price) {
+  cart. Push({ product, price });
+  console.log(product + " added to cart");
+}
+
+// Calculate total
+function calculate Total() {
+  let total = 0;
+  for (let item of cart) {
+    total += item. Price;
+  }
+
+  // add tax
+  total += total * App Config .get Tax();
+  console.log("Total with tax:", total);
+  return total;
+}
+
+// Apply discount using currying
+function apply Discount(discount) {
+  return function (amount) {
+    return amount - amount * discount;
+  };
+}
+
+// Generate coupon using generator
+function* generate Coupon() {
+  const coupons = ["10% OFF", "20% OFF", "50% OFF"];
+  for (let c of coupons) {
+    yield c;
+  }
+}
+
+// Process payment using callback
+function process Payment(amount, callback) {
+  console.log("Processing payment of:", amount);
+  set Timeout(() => {
+    callback("Payment Successful");
+  }, 2000);
+}
+
+
+add To Cart("Shoes", 1000);
+add To Cart("Bag", 500);
+
+let total = calculate Total();
+
+// discount 10%
+let discount10 = apply Discount(0.10);
+let final Amount = discount10(total);
+console.log("After discount:", final Amount);
+
+// coupon generator
+let coup = generate Coupon();
+console.log("Coupon:", coup. Next().value);
+console.log("Coupon:", coup. Next().value);
+
+// payment
+process Payment(final Amount, function (msg) {
+  console.log(msg);
+});
+
+
+Concept Questions:
+
+1. Difference between function declaration & expression?
+
+* Function Declaration:
+
+// - Defined with the function keyword at the start
+// - Hoisted completely (can be called before declaration)
+
+ * Function Expression:
+
+// - Assigned to a variable
+// - Not hoisted (cannot be called before assignment)
+
+
+2. What is higher order function?
+
+.A higher-order function is a function that can take another function as an argument, return a function, or both. 
+.It allows for more flexible and reusable code by enabling functions to operate on other functions.
+
+
+3. Real-time example of generator?
+
+. Generators are used when values need to be produced one at a time.
+
+ example: coupon generator in shopping website: in e-commerce websites(Amazon . Flipkart),
+ coupons are generated one by one when user clicks " get coupon".
+ instead of showing all coupons at once, generator gives next coupon when needed.
+
+
+4. Why do we use IIFE?
+
+// IIFE (Immediately Invoked Function Expression) is used to create a new scope and avoid polluting the global namespace.
+
+
+5. Difference between var, let, const?
+
+
+     var                                      let                                                const            
+
+Function-scoped,                           Block-scoped                                       Block- Scoped
+ 
+can be redeclared and updated         cannot be redeclared but can be updated               cannot be redeclared or updated
+
+hoisted with undefined                 hoisted but not initialized                           hoisted but not initialized
+
+
+
+
+
