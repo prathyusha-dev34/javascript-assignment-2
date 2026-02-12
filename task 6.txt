@@ -1,0 +1,549 @@
+SECTION 1 – Array Higher Order Methods Tasks
+
+Task 1 – for Each() Practice
+
+let subjects = ["Maths", "Science", "English", "History"]
+Requirements:
+• Use for Each()
+• Print Subject 1: Maths ... Subject 4: History
+• Store result in a variable
+• Question: Why does for Each() return undefined?
+
+
+let subjects = ["Maths", "Science", "English", "History"];
+
+let result = [];
+
+subjects. for Each((sub, index) => {
+  result. Push( Subject ${index + 1}: ${sub});
+});
+
+console.log(result);
+
+
+output:
+
+
+[
+  "Subject 1: Maths",
+  "Subject 2: Science",
+  "Subject 3: English",
+  "Subject 4: History"
+]
+
+
+Task 2 – map() Practice
+
+let prices = [100, 200, 300, 400]
+
+Requirements:
+• Use map()
+• Add 10% GST
+• Return new array
+• Expected Output: [110, 220, 330, 440]
+
+let prices = [100, 200, 300, 400];
+
+// Add 10% GST
+
+let new Prices = prices. Map(price => price * 1.10);
+
+console.log(new Prices);
+
+
+output:
+
+[110, 220, 330, 440]
+
+
+Task 3 – filter() Practice
+
+let students = [
+{ name: "A", marks: 45 },
+{ name: "B", marks: 75 },
+{ name: "C", marks: 35 },
+{ name: "D", marks: 85 }
+]
+Requirements:
+• Use filter()
+• Get students scoring above 50
+• Print filtered array
+
+let students = [
+
+  { name: "A", marks: 45 },
+  { name: "B", marks: 75 },
+  { name: "C", marks: 35 },
+  { name: "D", marks: 85 }
+];
+
+// Filter students with marks above 50
+
+let filtered Students = students. Filter(student => student. Marks > 50);
+
+console.log(filtered Students);
+
+
+output:
+
+
+[
+  { name: "B", marks: 75 },
+  { name: "D", marks: 85 }
+]
+
+
+Task 4 – find() Practice
+Use same students array
+Requirements:
+• Use find()
+• Find first student scoring above 50
+• Print that object
+• Question: Difference between filter() and find()?
+
+let students = [
+  { name: "A", marks: 45 },
+  { name: "B", marks: 75 },
+  { name: "C", marks: 35 },
+  { name: "D", marks: 85 }
+];
+
+// Find first student scoring above 50
+let student Found = students. Find(student => student. Marks > 50);
+
+console.log(student Found);
+
+
+output:
+
+{ name: "B", marks: 75 }
+
+
+
+
+  // Difference between filter() and find()?
+
+
+
+           filter()                                   find()  
+
+                 
+| Returns **all matching elements** | Returns **first matching element only** |
+| Output is an **array**            | Output is a **single object/value**     |
+| Continues checking entire array   | Stops when match is found               |
+| Example result: [ {…}, {…} ]      | Example result: {…}                     |
+
+
+
+Task 5 – reduce() Practice
+
+let cart = [
+{ item: "Shirt", price: 1000 },
+{ item: "Shoes", price: 2000 },
+{ item: "Watch", price: 3000 }
+]
+Requirements:
+• Use reduce()
+• Calculate total price
+• Bonus: Add 5% tax inside reduce()
+
+
+
+let cart = [
+  { item: "Shirt", price: 1000 },
+  { item: "Shoes", price: 2000 },
+  { item: "Watch", price: 3000 }
+];
+
+// Calculate total with 5% tax
+let total Price = cart. Reduce((total, product) => {
+  return total + product. Price * 1.05; 
+ }, 0);
+
+
+console.log(total Price);
+
+output:
+
+6300
+
+
+Task 6 – some() Practice
+let numbers = [1, 3, 5, 7, 8]
+
+Requirement:
+• Check if at least one number is even
+• Output: true
+
+
+let numbers = [1, 3, 5, 7, 8];
+
+// Check if at least one number is even
+let has Even = numbers. Some(num => num % 2 === 0);
+
+console.log(has Even);
+
+
+output:
+
+true
+
+
+
+Task 7 – every() Practice
+let ages = [22, 25, 19, 30]
+
+Requirement:
+• Check if all ages are above 18
+
+
+let ages = [22, 25, 19, 30];
+
+// Check if all ages are above 18
+let allAbove18 = ages. Every(age => age > 18);
+
+console.log(allAbove18);
+
+output:
+
+true
+
+
+Task 8 – sort() Practice
+
+let salaries = [50000, 10000, 70000, 30000]
+
+Requirements:
+• Sort ascending
+• Sort descending
+• Explain why normal sort() fails for numbers
+
+
+
+let salaries = [50000, 10000, 70000, 30000];
+
+// Ascending order
+let asc = [...salaries].sort((a, b) => a - b);
+console.log(asc);
+
+// Descending order
+let desc = [...salaries].sort((a, b) => b - a);
+console.log(desc);
+
+
+output:[10000, 30000, 50000, 70000]
+       [70000, 50000, 30000, 10000]
+
+[...] spread is used so original array isn’t modified.
+
+why normal sort() fails for numbers
+
+salaries. Sort();
+console.log(salaries);
+
+.Default sort() converts numbers to strings
+
+.Then sorts dictionary order
+
+
+Task 9 – Array Conversion Methods
+let arr = [10, 20, 30, 40]
+
+Requirements:
+• Convert using to String()
+• Convert using join("-")
+• Expected Output: 10-20-30-40
+
+
+let arr = [10, 20, 30, 40];
+
+// Using to String()
+let str1 = arr. to String();
+console.log(str1);
+
+// Using join("-")
+let str2 = arr .join("-");
+console.log(str2);
+
+output:
+
+10,20,30,40      // from to String()
+10-20-30-40      // from join("-")
+
+
+
+SECTION 2 – String Methods Tasks
+
+Task 10 – char At() & char code At()
+let word = "Developer"
+Requirements:
+• Get character at index 4
+• Get ASCII value of character at index 4
+
+
+let word = "Developer";
+
+// Character at index 4
+let char = word. char At(4);
+console.log(char);
+
+// ASCII value of character at index 4
+let ascii = word. char Code At(4);
+console.log(ascii);
+
+output:
+
+l
+108
+
+
+Task 11 – slice()
+
+let company = "Stackly Company"
+Extract: Company
+
+
+
+let company = "Stackly Company";
+
+// Extract "Company"
+let result = company. Slice(7);
+
+console.log(result);
+
+
+output:
+
+company
+
+
+
+Task 12 – Case Conversion
+
+let user Input = "JavaScript"
+• Convert to uppercase
+• Convert to lowercase
+
+
+let user Input = "JavaScript";
+
+// Convert to uppercase
+let upper = user Input.to Uppercase();
+console.log(upper);
+
+// Convert to lowercase
+let lower = user Input.to Lowercase();
+console.log(lower);
+
+output:
+
+JAVASCRIPT
+java script
+
+
+Task 13 – trim()
+let email = " naveen@gmail.com "
+Remove unwanted spaces
+
+
+let email = " naveen@gmail.com ";
+
+// Remove unwanted spaces
+let clean Email = email. Trim();
+
+console.log(clean Email);
+
+
+output:
+
+naveen@gmail.com
+
+
+Task 14 – includes()
+let message = "Welcome to JavaScript Training"
+Check if "JavaScript" exists
+
+
+let message = "Welcome to JavaScript Training";
+
+// Check if "JavaScript" exists
+let result = message. Includes("JavaScript");
+
+console.log(result);
+
+
+output: true
+
+
+
+Task 15 – split()
+let movie = "Spider-Man-no-way-home"
+Convert into array
+
+
+
+let movie = "Spider-Man-no-way-home";
+
+// Convert into array
+let arr = movie. Split("-");
+
+console.log(arr);
+
+
+output:["spider", "man", "no", "way", "home"]
+
+
+Task 16 – index Of() & last Index Of()
+
+let text = "programming"
+• Find first index of 'm'
+• Find last index of 'm'
+
+let text = "programming";
+
+// First index of 'm'
+let first = text. Index Of('m');
+console.log(first);
+
+// Last index of 'm'
+let last = text. Last Index Of('m');
+console.log(last);
+
+output
+
+p r o g r a m m i n g
+0 1 2 3 4 5 6 7 8 9 10
+
+
+index Of('m') → finds first occurrence → index 6
+
+last Index Of('m') → finds last occurrence → index 7
+
+
+Task 17 – replace()
+let tech = "I love python"
+Replace python with JavaScript
+
+
+let tech = "I love python";
+
+// Replace python with JavaScript
+let updated = tech. replace("python", "JavaScript");
+
+console.log(updated);
+
+
+output:I love JavaScript
+
+Task 18 – starts With() & ends With()
+let filename = "report.pdf"
+• Check if starts with "report"
+• Check if ends with ".pdf"
+
+let filename = "report.pdf";
+
+// Check start
+let start Check = file name. starts With("report");
+console.log(start Check);
+
+// Check end
+let end Check = filename. Ends With(".pdf");
+console.log(end Check);
+
+output:
+
+true
+true
+
+
+Task 19 – repeat()
+
+let star = "*"
+Print 10 stars using repeat()
+
+
+let star = "*";
+
+// Print 10 stars
+let result = star. Repeat(10);
+
+console.log(result);
+
+
+output:
+
+**********
+
+FINAL TEAM CHALLENGE – Employee Report System
+let employees = [
+{ name: "Naveen", salary: 50000 },
+{ name: "Arun", salary: 30000 },
+{ name: "Kiran", salary: 70000 }
+]
+Requirements:
+• Convert names to uppercase using map()
+• Filter salary > 40000
+• Find first salary > 60000
+• Calculate total salary using reduce()
+• Sort salaries descending
+
+
+
+let employees = [
+  { name: "Naveen", salary: 50000 },
+  { name: "Arun", salary: 30000 },
+  { name: "Kiran", salary: 70000 }
+];
+
+//  Convert names to uppercase
+let upper Names = employees. Map(emp => ({
+  ...emp,
+  name: emp.name.to Uppercase()
+}));
+console.log("Uppercase:", upper Names);
+
+//  Filter salary > 40000
+let filtered = employees. Filter(emp => emp. salary > 40000);
+console.log("Salary > 40000:", filtered);
+
+//  Find first salary > 60000
+let found = employees. Find(emp => emp. salary > 60000);
+console.log("First salary > 60000:", found);
+
+//  Calculate total salary
+let total = employees.reduce((sum, emp) => sum + emps. salary, 0);
+console.log("Total salary:", total);
+
+//  Sort salaries descending
+let sorted = [...employees].sort((a, b) => b. Salary - a. Salary);
+console.log("Sorted Desc:", sorted);
+
+
+output:
+
+Uppercase: [
+ { name: "NAVEEN", salary: 50000 },
+ { name: "ARUN", salary: 30000 },
+ { name: "KIRAN", salary: 70000 }
+]
+
+Salary > 40000:
+[ { name: "Naveen", salary: 50000 },
+  { name: "Kiran", salary: 70000 } ]
+
+First salary > 60000:
+{ name: "Kiran", salary: 70000 }
+
+Total salary:
+150000
+
+Sorted Desc:
+[
+ { name: "Kiran", salary: 70000 },
+ { name: "Naveen", salary: 50000 },
+ { name: "Arun", salary: 30000 }
+]
+
+
+
+
