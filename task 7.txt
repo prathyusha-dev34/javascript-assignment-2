@@ -1,0 +1,249 @@
+SECTION 1 – Date Object Tasks
+
+TASK 1 – Custom Digital Clock
+Create a live digital clock using:
+- new Date()
+- get Hours()
+- get Minutes()
+- get Seconds()
+- set Interval()
+Format:
+Current Time: 14 : 05 : 09
+(Add leading zero if value < 10
+
+
+function digital Clock() {
+  let now = new Date();
+
+  let hours = now. Get Hours();
+  let minutes = now. Get Minutes();
+  let seconds = now. Get Seconds();
+
+  // Add leading zeros
+
+  hours = hours < 10 ? "0" + hours : hours;
+  minutes = minutes < 10 ? "0" + minutes : minutes;
+  seconds = seconds < 10 ? "0" + seconds : seconds;
+
+  console.log(`Current Time: ${hours} : ${minutes} : ${seconds}`);
+}
+
+// Run every second
+
+set Interval(digital Clock, 1000);
+
+
+TASK 2 – Find Current Day Name
+
+Use get Day()
+Array:
+["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+Print:
+Today is Friday
+
+
+let days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday"
+];
+
+let today = new Date();
+let day Index = today. Get Day();   // returns 0–6
+
+console.log("Today is " + days[day Index]);
+
+
+TASK 3 – Age Calculator (Basic)
+
+let birthyear = 2003
+Use get Full Year()
+Print:
+Your age is 23
+
+
+
+let birthyear = 2003;
+
+let current Year = new Date().get Full Year();
+
+let age = current Year - birthyear;
+
+console.log("Your age is " + age);
+
+
+output:
+
+Your age is 23
+
+
+TASK 4 – Create Specific Date
+
+Create:
+15 August 2020
+10:30:45 AM
+Using:
+- new Date()
+- set Full Year()
+- set Month()
+- set Date()
+- set Hours()
+- set Minutes()
+- set Seconds()
+Print using:
+to Locale String()
+
+
+
+let my Date = new Date();
+
+// Set values
+my Date. Set. Full Year(2020);
+my Date. Set Month(7);      // August (Months are 0-based → 7 = August)
+my Date. set Date(15);
+
+my Date. set Hours(10);
+my Date. set Minutes(30);
+my Date. Set Seconds(45);
+
+// Print formatted output
+console.log(my Date.to Locale String());
+
+
+output:
+
+15/8/2020, 10:30:45 am
+
+
+SECTION 2 – set Timeout & set Interval
+
+
+TASK 5 – Delayed Message
+Use set Timeout()
+After 3 seconds print:
+Welcome Naveen 
+
+
+set Timeout(() => {
+
+ console.log("Welcome Naveen");
+
+}, 3000);
+
+
+TASK 6 – Stop Interval After 5 Seconds
+
+
+Output:
+1
+2
+3
+4
+5
+Stopped
+Use:
+- set Interval()
+- clear Interval()
+
+
+let count = 1;
+let stop = set Interval(() => {
+    console.log(count);
+    if (count == 5) {
+        clear Interval(stop);
+        console.log("Stopped");
+    }
+    count++;
+}, 1000);
+
+
+
+SECTION 3 – Promise Practice
+
+TASK 7 – Simple Promise
+If number > 10 → resolve("Valid number")
+Else → reject("Invalid number")
+Handle using:
+.then()
+.catch()
+.finally()
+
+
+Ans:
+let p = new Promise((res, rej) => {
+    let num = 15;
+    if (num > 10) {
+        res("Valid number");
+    } else {
+        rej("Invalid number");
+    }
+});
+
+p.then((msg) => console.log(msg))
+ .catch((err) => console.log(err))
+ .finally(() => console.log("Done"));
+
+
+SECTION 4 – Fetch API Task
+
+
+TASK 8 – Fetch Product Prices
+
+API:
+https://fakestoreapi.com/products
+Print only:
+Product: <title>
+Price: <price>
+-----------------
+
+fetch("https://fakestoreapi.com/products")
+.then((res) => res.json())
+.then((data) => {
+    data. for Each((item) => {
+        console.log("Product: " + item. Title);
+        console.log("Price: " + item. Price);
+        console.log("-----------------")
+    });
+});
+
+
+
+
+SECTION 5 – Execution Order Task
+
+function one(){
+ console.log("one");
+}
+function two(){
+ console.log("two");
+}
+function three(){
+ console.log("three");
+}
+one()
+set Timeout(two,0)
+three()
+Predict Output and Explain Why.
+
+
+Output:
+
+one
+
+three
+
+two
+
+Explanation:
+
+// The output is "one", "three", "two" because of how JavaScript handles the event loop and task queue. 
+// When one() is called, it executes immediately and logs "one". 
+// Then, set Timeout(two, 0) schedules two() to run after the current call stack is clear, but it does not execute immediately. 
+// Next, three() is called and executes immediately, logging "three".
+//  After the call stack is empty, the event loop picks up the scheduled two() function and executes it, logging "two".
+
+
