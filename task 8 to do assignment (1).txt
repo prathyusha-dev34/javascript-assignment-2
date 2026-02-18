@@ -1,0 +1,185 @@
+Task Requirements:
+
+You are required to implement the following concepts in your project:
+DOM Selection
+Use document. Query Selector() to select input, button, and ordered list elements.
+Event Handling
+Implement add Event Listener("click") on the button.
+Add functionality to remove a task when the list item is clicked.
+
+Dynamic Element Creation
+
+Use document. Create Element("li") to create new list items.
+Set inner Text based on user input.
+Apply styling using style. Property.
+Add class using set Attribute().
+Append & Remove
+Append the created <li> to <ol> using append().
+Remove the task using element. Remove() when clicked.
+Input Handling
+Clear the input field after adding the task.
+
+ Expected Outcome:
+
+User enters a task in the input field.
+On button click:
+A new styled list item should be created.
+It should be appended to the ordered list.
+Clicking the task should remove it.
+Input field should reset.
+
+
+// Html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>To Do List</title>
+</head>
+<body>
+
+    <h2>My Tasks</h2>
+
+    <!-- Input + Button -->
+    <input type="text" id="task Input" placeholder="Enter task">
+    <button id="add Btn">Add Task</button>
+
+    <!-- Ordered List -->
+    <ol id="task List"></ol>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+// css
+
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f7fa;
+        text-align: center;
+        margin-top: 50px;
+    }
+
+    h2 {
+        color: #333;
+    }
+
+    /* Input box */
+    #taskInput {
+        padding: 10px;
+        width: 220px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        outline: none;
+    }
+
+    /* Button */
+    #addBtn {
+        padding: 10px 15px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-left: 5px;
+    }
+
+    #addBtn:hover {
+        background-color: #0056b3;
+    }
+
+    /* Ordered list */
+    #taskList {
+        width: 300px;
+        margin: 20px auto;
+        padding: 0;
+        text-align: left;
+    }
+
+    /* Task items */
+    .task-item {
+        background-color: #e3f2fd;
+        padding: 10px;
+        margin: 5px 0;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    .task-item: hover {
+        background-color: #bbdefb;
+        transform: scale(1.02);
+    }
+</style>
+
+
+
+// Java script:
+
+
+
+// DOM Selection
+
+const input = document. Query Selector("input");
+const button = document. Query Selector("button");
+const list = document. query Selector("ol");
+
+
+
+// Function: Add Task
+
+function add Task() {
+
+  // Get trimmed user input
+  const task Text = input. value. Trim();
+
+  // Prevent empty tasks
+  if (task Text === "") return;
+
+  // Create new list item
+  const li = document. Create Element("li");
+
+  // Set text from input
+  li. inner Text = task Text;
+
+  // Apply styling (requirement)
+  li. style .cursor = "pointer";
+  li. style .padding = "6px";
+  li. style .background Color = "#f2f2f2";
+  li. style. margin Top = "5px";
+
+  // Add class (requirement)
+  li .set Attribute("class", "task-item");
+
+  // Append to ordered list
+  list. Append(li);
+
+  // Remove task when clicked
+  li. add Event Listener("click", function () {
+    li. remove();
+  });
+
+  // Clear input field
+  input. Value = "";
+}
+
+
+// Event Handling
+
+// Button click adds task
+button. Add Event Listener("click", add Task);
+
+
+// Optional (Bonus): Press Enter to add task
+input. Add Event Listener("key down", function(event) {
+  if (event. Key === "Enter") {
+    add Task();
+  }
+});
+
+
+output:
