@@ -161,9 +161,10 @@ button.addEventListener("click", function () {
     input.value = "";
 });
 
-
+output:https://github.com/prathyusha-dev34/javascript-assignment-2/blob/main/My%20Tasks%20to-do.png
 
   
+
 
 
 
