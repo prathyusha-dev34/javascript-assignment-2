@@ -160,9 +160,10 @@ button.addEventListener("click", function () {
     //  Clear input 
     input.value = "";
 });
-}
+
 
   
+
 
 
 
